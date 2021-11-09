@@ -20,7 +20,7 @@ import {
 } from 'utils/modelExtenders';
 import storage from 'utils/storage';
 
-import { rMyAddress } from './walletState';
+import { rMyAddress } from './authState';
 
 import {
   IUser,

@@ -1,9 +1,8 @@
-export * from './AccountInfo/AccountInfo';
 export * from './ApeAvatar/ApeAvatar';
 export * from './ApeTabs/ApeTabs';
 export * from './CircleSelectModal/CircleSelectModal';
-export * from './ConnectWalletButton/ConnectWalletButton';
-export * from './ConnectWalletModal/ConnectWalletModal';
+export * from './WalletButton/WalletButton';
+export * from './WalletAuthModal/WalletAuthModal';
 export * from './CoordinapeLogo/CoordinapeLogo';
 export * from './Drawer/Drawer';
 export * from './ErrorBoundary/ErrorBoundary';
@@ -39,3 +38,4 @@ export * from './SkillToggles/SkillToggles';
 export * from './EditProfileModal/EditProfileModal';
 export * from './AvatarUpload/AvatarUpload';
 export * from './FormFileUpload/FormFileUpload';
+export * from './GlobalUi/GlobalUi';

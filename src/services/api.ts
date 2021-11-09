@@ -15,6 +15,8 @@ import {
   IApiUser,
   IApiUserProfile,
   IApiEpoch,
+  IApiLogin,
+  IApiManifest,
   PostProfileParam,
   PostTokenGiftsParam,
   PostUsersParam,
@@ -31,14 +33,49 @@ axios.defaults.baseURL = API_URL;
 
 export class APIService {
   provider = undefined as Web3Provider | undefined;
+  token = undefined as string | undefined;
+  address = undefined as string | undefined;
 
-  constructor(provider?: Web3Provider) {
+  constructor(provider?: Web3Provider, token?: string, address?: string) {
     this.provider = provider;
+    this.token = token;
+    this.address = address;
   }
 
   setProvider(provider?: Web3Provider) {
     this.provider = provider;
   }
+
+  setAuth(address?: string, token?: string) {
+    this.address = address;
+    this.token = token;
+  }
+
+  login = async (address: string): Promise<IApiLogin> => {
+    const { signature, hash } = await getSignature(
+      'Login to Coordinape',
+      this.provider
+    );
+    const response = await axios.post('/v2/login', {
+      signature,
+      hash,
+      address,
+    });
+    return response.data;
+  };
+
+  getManifest = async (address: string): Promise<IApiManifest> => {
+    const { signature, hash } = await getSignature(
+      'Login to Coordinape',
+      this.provider
+    );
+    const response = await axios.post('/v2/manifest', {
+      signature,
+      hash,
+      address,
+    });
+    return response.data;
+  };
 
   getProfile = async (address: string): Promise<IApiFilledProfile> => {
     const [response, selfIdResponse] = await Promise.all([

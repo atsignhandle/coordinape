@@ -55,3 +55,17 @@ export type TUpdateGift = ({
   note?: string;
   tokens?: number;
 }) => void;
+
+export enum EConnectorNames {
+  Injected = 'injected',
+  WalletConnect = 'walletconnect',
+  WalletLink = 'walletlink',
+  Fortmatic = 'fortmatic',
+  Portis = 'portis',
+}
+
+export interface IAuth {
+  address?: string;
+  connectorName?: EConnectorNames;
+  authTokens: { [k: string]: string | undefined };
+}

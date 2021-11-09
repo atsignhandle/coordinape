@@ -9,6 +9,8 @@ export const rWalletModalOpen = atom<boolean>({
   key: 'rWalletModalOpen',
   default: false,
 });
+export const useStateWalletModalOpen = () => useRecoilState(rWalletModalOpen);
+export const useSetWalletModalOpen = () => useSetRecoilState(rWalletModalOpen);
 
 export const rCircleSelectorOpen = atom<boolean>({
   key: 'rCircleSelectorOpen',

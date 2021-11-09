@@ -11,6 +11,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 import {
   RecoilAppController,
+  GlobalUi,
   ErrorBoundary,
   MainLayout,
   SentryScopeController,
@@ -40,6 +41,7 @@ function App() {
                 <BrowserRouter>
                   <MainLayout>
                     <RecoilAppController />
+                    <GlobalUi />
                     <SentryScopeController />
                     <RenderRoutes />
                   </MainLayout>

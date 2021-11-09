@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 
 import { useHistory, useLocation } from 'react-router-dom';
+import { useRecoilCallback } from 'recoil';
 
 import { makeStyles } from '@material-ui/core';
 
@@ -11,6 +12,7 @@ import {
   useSelectedCircle,
   useSetAmEgoAddress,
   useTriggerMode,
+  rTriggerMode,
 } from 'recoilState';
 import { MAP_HIGHLIGHT_PARAM } from 'routes/paths';
 import { assertDef } from 'utils/tools';
@@ -138,8 +140,24 @@ export const AssetMapPage = () => {
           />
         )}
       </div>
+      <DevModeInjector />
     </div>
   );
+};
+
+const DevModeInjector = () => {
+  const setMode = useRecoilCallback(({ set }) => async (active: boolean) => {
+    set(rTriggerMode, active);
+  });
+
+  useEffect(() => {
+    // Setup dev tool: trigger mode
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    window.mode = setMode;
+  }, [setMode]);
+
+  return <></>;
 };
 
 export default AssetMapPage;
