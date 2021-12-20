@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  coordinape:
+    build:
+      context: ./
+      target: production-build-stage
+      dockerfile: Dockerfile
+    container_name: coordinape
+    restart: 'always'
+    ports:
+      - '${API_PORT}:${API_PORT}'
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+    networks:
+      - backend
+    tty: true
+
+networks:
+  backend:
+    driver: bridge

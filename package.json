@@ -70,6 +70,7 @@
   },
   "scripts": {
     "start": "craco start",
+    "start:production": "NODE_ENV=production yarn build && serve -s build",
     "build": "craco build",
     "build:local": "craco  --max_old_space_size=4096 build",
     "build:gzip": "craco build && gzipper --verbose ./build",
